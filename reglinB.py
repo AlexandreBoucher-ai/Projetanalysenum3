@@ -13,6 +13,7 @@ def reglinB(X) :
     n = X.shape[0] # Nombre de points
 
     # Creation du membre de droite
+    # Donc les x sont donnés
     y = X[:,1].reshape(n,1)
 
     # Creation de la matrice A
