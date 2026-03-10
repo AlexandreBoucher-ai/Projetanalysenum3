@@ -39,10 +39,10 @@ def newton(beta_init, F, J, tol, nmax):
         # rappel dbeta = -(Fb/Jb) ne fonctionne pas!
 
         Q, R = la.qr(Jb, mode='economic')
-        rhs = -Q.T @ Fb
-        dbeta = solve(R, rhs)
+        b = -Q.T @ Fb
+        dbeta = solve(R, b)
         #test de commit
-        
+
         #dbeta = ...
 
 
