@@ -72,9 +72,13 @@ plt.show()
 # 2.3
 # j)
 Betak5A = regfreqA(X, 5)
+print(regfreqA(X, 5))
 Betak15A = regfreqA(X, 15)
+print(regfreqA(X, 15))
 Betak5B = regfreqB(X, 5)
+print(regfreqB(X, 5))
 Betak15B = regfreqB(X, 15)
+print(regfreqB(X, 15))
 
 # calcul des y
 # on va utilise A*Beta = y
@@ -109,3 +113,17 @@ plt.xlabel("xi")
 plt.ylabel("yi")
 plt.title ("Figure 4: courbes de regfreqA/B pour k=5(vert) et k=15 (jaune)")
 plt.show()
+
+
+# k)
+def temps(func, X, k):
+    debut = time()
+    for i in range(1000):
+        beta = func(X, k)
+    fin = time()
+    return((fin-debut)/1000)
+
+#print(temps(regfreqA,X, 5))
+#print(temps(regfreqA, X, 15))
+#print(temps(regfreqB, X, 5))
+#print(temps(regfreqB, X, 15))
