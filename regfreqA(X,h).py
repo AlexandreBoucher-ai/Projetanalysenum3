@@ -12,6 +12,8 @@ def reglinA(X,k) :
         beta : vecteur des coefficients de la droite de regression
     '''
     n = X.shape[0] # Nombre de points
+    # Creation du membre de droite
+    y = X[:,1].reshape(n,1)
 
     # Creation des membres
     # On crée A

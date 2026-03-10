@@ -2,7 +2,7 @@ import numpy as np
 from scipy.linalg import qr
 from numpy.linalg import solve, norm
 
-def reglinB(X) :
+def reglinB(X, k) :
     '''
     Args:
         X : le jeu de donnees n x 2
@@ -11,6 +11,8 @@ def reglinB(X) :
         beta : vecteur des coefficients de la droite de regression
     '''
     n = X.shape[0] # Nombre de points
+    # Creation du membre de droite
+    y = X[:,1].reshape(n,1)
 
     # Creation des membres
     # On crée A
