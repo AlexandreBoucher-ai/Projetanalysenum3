@@ -3,7 +3,7 @@ from scipy.linalg import lu
 from numpy.linalg import solve, norm
 
 # on doit ajouter k en argument (pour le nombre d'inconnu beta)
-def reglinA(X,k) :
+def regfreqA(X,k) :
     '''
     Args:
         X : le jeu de donnees n x 2

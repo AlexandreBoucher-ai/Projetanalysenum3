@@ -2,7 +2,7 @@ import numpy as np
 from scipy.linalg import qr
 from numpy.linalg import solve, norm
 
-def reglinB(X, k) :
+def reqfreqB(X, k) :
     '''
     Args:
         X : le jeu de donnees n x 2

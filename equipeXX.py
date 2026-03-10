@@ -6,6 +6,7 @@ from reglinB import reglinB
 from newton import newton
 from scipy.linalg import lu
 from numpy.linalg import solve, norm
+from reqfreqB(X,h) import
 
 X = np.loadtxt("points.txt") #Converti le texte en array
 
@@ -67,11 +68,6 @@ plt.xlabel("xi")
 plt.ylabel("yi")
 plt.show()
 
-
-
-
-
-
-
 # 2.3
 # j)
+
