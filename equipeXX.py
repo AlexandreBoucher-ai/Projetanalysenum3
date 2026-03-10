@@ -81,18 +81,18 @@ Betak15B = regfreqB(X, 15)
 # Pour, on réutilise le calcul fait dans regfreqA et B
 # On remplace tout les n = 1000, k=5
 Ak5 = np.ones((1000, 2*5-1))
-x = X[:,0]
+# on doit redéfinir interx (pour qu'il aille 1000 ligne)
+interxmodif = np.linspace(1,6, 1000)
 for i in range(1, 5):
-    Ak5[:,i] = np.cos((i-1)*x)
+    Ak5[:,i] = np.cos(i*interxmodif)
 for i in range(1, 5):
-    Ak5[:,5-1+i] = np.sin((i*x))
+    Ak5[:,5-1+i] = np.sin((i*interxmodif))
 # On remplace tout les n = 1000, k=15
 Ak15 = np.ones((1000, 2*15-1))
-x = X[:,0]
 for i in range(1, 15):
-    Ak15[:,i] = np.cos((i-1)*x)
+    Ak15[:,i] = np.cos(i*interxmodif)
 for i in range(1, 15):
-    Ak15[:,15-1+i] = np.sin(i*x)
+    Ak15[:,15-1+i] = np.sin(i*interxmodif)
 # A*Beta = y (Grâce à numpy) @ pour multiplication matriciel
 yk5A = Ak5 @ Betak5A
 yk15A = Ak15 @ Betak15A
@@ -101,11 +101,11 @@ yk15B = Ak15 @ Betak15B
 
 plt.figure()
 plt.scatter(X[:,0], X[:,1], s=3)
-plt.plot(interx, yk5A)
-plt.plot(interx, yk15A)
-plt.plot(interx, yk5B)
-plt.plot(interx, yk15B)
+plt.plot(interxmodif, yk5A, color="blue")
+plt.plot(interxmodif, yk15A, color="red")
+plt.plot(interxmodif, yk5B, color="green")
+plt.plot(interxmodif, yk15B, color="yellow")
 plt.xlabel("xi")
 plt.ylabel("yi")
-plt.title ("Figure 4: ")
+plt.title ("Figure 4: courbes de regfreqA/B pour k=5(vert) et k=15 (jaune)")
 plt.show()
