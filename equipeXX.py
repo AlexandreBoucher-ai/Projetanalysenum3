@@ -44,8 +44,24 @@ plt.ylabel("yi")
 plt.show()
 
 #2.2 f
-xi = X[;, 0:1]
+xi = X[:, 0:1]
 yi = X[:, 1:2]
 
-F = lambda beta : (beta[0] + beta[1] * np.sqrt(xi - beta[2] + yi))
-J = lambda beta : np.array([np.ones_like(xi), np.sqrt(xi-b[2]), (-b[1] / (2 * np.sqrt(xi - b[2])))]).T
+F = lambda beta : (beta[0] + beta[1] * np.sqrt(xi - beta[2])) - yi
+J = lambda beta : np.array([np.ones_like(xi.flatten()), np.sqrt(xi.flatten()-beta[2]), -beta[1] / (2 * np.sqrt(xi.flatten() - beta[2]))]).T
+
+beta_final = newton(np.array([[1.0], [1.0], [1.0]]), F, J, 1e-7, 20)
+
+print(f"beta1 = {beta_final[0]}")
+print(f"beta2 = {beta_final[1]}")
+print(f"beta3 = {beta_final[2]}")
+
+plt.figure()
+plt.scatter(X[:,0],X[:,1],s=3)
+x_plot = np.linspace(1, 6)
+y_plot = beta_final[0] + beta_final[1] * np.sqrt(x_plot - beta_final[2])
+plt.plot(x_plot, y_plot, color = "red")
+plt.title("Figure 3: Régression non-linéaires avec la méthode Newton")
+plt.xlabel("xi")
+plt.ylabel("yi")
+plt.show()
