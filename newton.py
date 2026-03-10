@@ -41,6 +41,8 @@ def newton(beta_init, F, J, tol, nmax):
         Q, R = la.qr(Jb, mode='economic')
         rhs = -Q.T @ Fb
         dbeta = solve(R, rhs)
+        #test de commit
+        
         #dbeta = ...
 
 
