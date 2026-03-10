@@ -2,7 +2,8 @@ import numpy as np
 from scipy.linalg import lu
 from numpy.linalg import solve, norm
 
-def reglinA(X) :
+# on doit ajouter k en argument (pour le nombre d'inconnu beta)
+def reglinA(X,k) :
     '''
     Args:
         X : le jeu de donnees n x 2
@@ -13,12 +14,17 @@ def reglinA(X) :
     n = X.shape[0] # Nombre de points
 
     # Creation des membres
-
-    # premier membre de droite de base (1)
-    y = X[:,1].reshape(n,1)
+    # On crée A
+    A = np.ones((n, 2*k-1))
+    # on crée x, vu qu'il va falloir le réutiliser c'est plus simple
+    x = X[:,0]
+    # première sommation (on doit précisé commence à 1 car i=1 dans la sommation et non 0)
+    for i in range(1, k+1):
+        # toute la colonne i (qui commence à 1)
+        A[:,i] = np.cos((i-1)*x)
+    for i in range(1, k+1):
+        A[:,k-1+i] = np.sin((i-k)*x)
     
-
-
     # Resolution du systeme rectangulaire (approche A)
     AtA = A.T@A
     L, U = lu(AtA, permute_l=True)
