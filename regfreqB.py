@@ -20,11 +20,11 @@ def regfreqB(X, k) :
     # on crée x, vu qu'il va falloir le réutiliser c'est plus simple
     x = X[:,0]
     # première sommation (on doit précisé commence à 1 car i=1 dans la sommation et non 0)
-    for i in range(1, k+1):
+    for i in range(1, k):
         # toute la colonne i (qui commence à 1)
         A[:,i] = np.cos((i-1)*x)
-    for i in range(1, k+1):
-        A[:,k-1+i] = np.sin((i-k)*x)
+    for i in range(1, k):
+        A[:,k-1+i] = np.sin(i*x)
 
     # Resolution du systeme rectangulaire (approche B)
     Q, R = qr(A, mode='economic')

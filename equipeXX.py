@@ -82,22 +82,22 @@ Betak15B = regfreqB(X, 15)
 # On remplace tout les n = 1000, k=5
 Ak5 = np.ones((1000, 2*5-1))
 x = X[:,0]
-for i in range(1, 5+1):
+for i in range(1, 5):
     Ak5[:,i] = np.cos((i-1)*x)
-for i in range(1, 5+1):
-    Ak5[:,5-1+i] = np.sin((i-5)*x) 
+for i in range(1, 5):
+    Ak5[:,5-1+i] = np.sin((i*x))
 # On remplace tout les n = 1000, k=15
 Ak15 = np.ones((1000, 2*15-1))
 x = X[:,0]
-for i in range(1, 15+1):
+for i in range(1, 15):
     Ak15[:,i] = np.cos((i-1)*x)
-for i in range(1, 15+1):
-    Ak15[:,15-1+i] = np.sin((i-15)*x)
-# A*Beta = y (Grâce à numpy)
-yk5A = Ak5 * Betak5A
-yk15A = Ak15 * Betak15A
-yk5B = Ak5 * Betak5B
-yk15B = Ak15 * Betak15B
+for i in range(1, 15):
+    Ak15[:,15-1+i] = np.sin(i*x)
+# A*Beta = y (Grâce à numpy) @ pour multiplication matriciel
+yk5A = Ak5 @ Betak5A
+yk15A = Ak15 @ Betak15A
+yk5B = Ak5 @ Betak5B
+yk15B = Ak15 @ Betak15B
 
 plt.figure()
 plt.scatter(X[:,0], X[:,1], s=3)
@@ -107,5 +107,5 @@ plt.plot(interx, yk5B)
 plt.plot(interx, yk15B)
 plt.xlabel("xi")
 plt.ylabel("yi")
-plt.title ("Figure 2: Tracer des points et des 2 droites de régression")
+plt.title ("Figure 4: ")
 plt.show()
