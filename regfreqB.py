@@ -31,5 +31,6 @@ def regfreqB(X, k) :
     beta = solve(R,Q.T@y)
 
     print(f"Norme du residu ||F(beta)|| = ||A*beta - y|| = {norm(A@beta-y)}")
+    print("Conditionnement", np.linalg.cond(R))
 
     return beta

@@ -127,3 +127,9 @@ def temps(func, X, k):
 #print(temps(regfreqA, X, 15))
 #print(temps(regfreqB, X, 5))
 #print(temps(regfreqB, X, 15))
+
+# On vérifie les conditionnement après l'avoir ajouter au fonction
+regfreqA(X, 5)
+regfreqA(X, 15)
+regfreqB(X, 5)
+regfreqB(X, 15)
