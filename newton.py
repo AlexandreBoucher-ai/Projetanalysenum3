@@ -38,10 +38,9 @@ def newton(beta_init, F, J, tol, nmax):
         # MODIFIER ICI !
         # rappel dbeta = -(Fb/Jb) ne fonctionne pas!
 
-
-
-
-   
+        Q, R = la.qr(Jb, mode='economic')
+        rhs = -Q.T @ Fb
+        dbeta = solve(R, rhs)
         #dbeta = ...
 
 
